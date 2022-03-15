@@ -7,13 +7,8 @@ import br.com.fiap.abctechservice.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("livros")
@@ -21,13 +16,6 @@ public class LivroController {
 
     @Autowired
     private LivroService livroService;
-
-    @GetMapping
-    public List<LivroDTO> buscarLivros() {
-
-        return livroService.buscarLivros("");
-
-    }
 
     @GetMapping
     public List<LivroDTO> buscarLivros(@RequestParam(required = false, value = "titulo") String titulo) {

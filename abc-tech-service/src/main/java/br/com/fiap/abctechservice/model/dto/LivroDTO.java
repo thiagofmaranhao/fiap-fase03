@@ -1,5 +1,6 @@
 package br.com.fiap.abctechservice.model.dto;
 
+import br.com.fiap.abctechservice.model.Livro;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,14 @@ import java.util.Date;
  * @author leandrofranchi
  */
 public class LivroDTO {
+
+    public LivroDTO() {
+
+    }
+
+    public LivroDTO(Livro livro) {
+
+    }
 
     @Getter
     @Setter
