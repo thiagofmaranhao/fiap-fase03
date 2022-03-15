@@ -18,12 +18,17 @@ public class LivroDTO {
     }
 
     public LivroDTO(Livro livro) {
-
+        this.id = livro.getId();
+        this.titulo = livro.getTitulo();
+        this.dataDePublicacao = livro.getDataDePublicacao();
+        this.descricao = livro.getDescricao();
+        this.ISBN = livro.getISBN();
+        //this.preco = livro.getPreco;
     }
 
     @Getter
     @Setter
-    private int id;
+    private long id;
 
     @Getter
     @Setter
