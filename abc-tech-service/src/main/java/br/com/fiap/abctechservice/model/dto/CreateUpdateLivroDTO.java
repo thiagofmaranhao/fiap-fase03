@@ -5,26 +5,15 @@ import lombok.Setter;
 
 import java.util.Date;
 
+@Getter
+@Setter
+
 public class CreateUpdateLivroDTO {
 
-    @Getter
-    @Setter
     private String titulo;
-
-    @Getter
-    @Setter
     private String descricao;
-
-    @Getter
-    @Setter
     private String ISBN;
-
-    @Getter
-    @Setter
     private Date dataDePublicacao;
-
-    @Getter
-    @Setter
     private double preco;
 
 }

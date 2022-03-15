@@ -11,6 +11,8 @@ import java.util.Date;
  *
  * @author leandrofranchi
  */
+@Getter
+@Setter
 public class LivroDTO {
 
     public LivroDTO() {
@@ -26,28 +28,11 @@ public class LivroDTO {
         //this.preco = livro.getPreco;
     }
 
-    @Getter
-    @Setter
     private long id;
-
-    @Getter
-    @Setter
     private String titulo;
-
-    @Getter
-    @Setter
     private String descricao;
-
-    @Getter
-    @Setter
     private String ISBN;
-
-    @Getter
-    @Setter
     private Date dataDePublicacao;
-
-    @Getter
-    @Setter
     private double preco;
 
 }

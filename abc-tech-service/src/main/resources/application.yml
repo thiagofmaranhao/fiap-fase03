@@ -1,15 +1,16 @@
 server:
   port: 8088
 
+buid.name: @project.name@
+build.version: @project.version@
+
 
 spring:
   datasource:
-    #url: jdbc:h2:/caminho_do_arquivo/fiapspring;DB_CLOSE_ON_EXIT=FALSE
-    url: jdbc:h2:mem:testdb
-    #username: fiap
-    username: sa
-    #password: fiap
-    password: password
+    url: jdbc:mysql://${DB_HOSTNAME:localhost}:${DB_PORT:3306}/${DB_NAME:abc_tech}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:Fiap1234}
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create

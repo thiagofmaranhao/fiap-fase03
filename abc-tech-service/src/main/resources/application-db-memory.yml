@@ -1,0 +1,15 @@
+server:
+  port: 8088
+
+
+spring:
+  datasource:
+    #url: jdbc:h2:/caminho_do_arquivo/fiapspring;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:testdb
+    #username: fiap
+    username: sa
+    #password: fiap
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
