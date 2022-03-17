@@ -21,3 +21,8 @@ spring:
       password: xuxuzinho
       name: admin
       roles: ADMIN
+
+
+jwt:
+  secret: f1aPs3cr37
+  expire: 5
