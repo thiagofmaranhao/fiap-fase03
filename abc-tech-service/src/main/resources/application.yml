@@ -1,8 +1,8 @@
 server:
   port: 80
 
-buid.name: @project.name@
-build.version: @project.version@
+buid.name: ABC Proj
+build.version: 0.1
 
 
 spring:
@@ -14,3 +14,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+
+  security:
+    user:
+      password: xuxuzinho
+      name: admin
+      roles: ADMIN

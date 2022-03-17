@@ -1,7 +1,9 @@
 package br.com.fiap.abctechservice.model;
 
 import br.com.fiap.abctechservice.model.dto.CreateUpdateLivroDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +13,8 @@ import java.util.Date;
 @Table(name = "TB_LIVRO")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Livro {
 
     @Id

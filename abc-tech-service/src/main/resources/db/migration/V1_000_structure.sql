@@ -8,3 +8,8 @@ create table TB_LIVRO
     data_de_publicacao timestamp,
     primary key (id)
 )
+
+
+
+
+INSERT INTO tb_livro (id, isbn, data_de_publicacao, descricao, preco, titulo) VALUES (generated, '123', '2022-03-17 18:49:18.000000', 'Livro Desc', 34, 'Meu Titulo A');
