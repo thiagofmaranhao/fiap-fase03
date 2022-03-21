@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdatePrecoLivroDTO {
-
-    private double preco;
-
+public class AuthDTO {
+    private String username;
+    private String password;
 }

@@ -15,12 +15,12 @@ spring:
     hibernate:
       ddl-auto: none
 
-
-  security:
-    user:
-      password: xuxuzinho
-      name: admin
-      roles: ADMIN
+#
+#  security:
+#    user:
+#      password: xuxuzinho
+#      name: admin
+#      roles: ADMIN
 
 
 jwt:

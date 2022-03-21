@@ -13,3 +13,11 @@ echo "----"
 ## Usuário User não terá acesso
 echo "Acessando com usuário User"
 curl -X GET -v --user user:user http://localhost/livros?titulo=A
+
+
+curl --location --request POST 'http://localhost:8088/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username" : "fabio@fiap.com",
+    "password" : "senha123"
+}'

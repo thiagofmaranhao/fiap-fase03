@@ -1,7 +1,9 @@
 package br.com.fiap.abctechservice.model.dto;
 
 import br.com.fiap.abctechservice.model.Livro;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -13,11 +15,9 @@ import java.util.Date;
  */
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class LivroDTO {
-
-    public LivroDTO() {
-
-    }
 
     public LivroDTO(Livro livro) {
         this.id = livro.getId();

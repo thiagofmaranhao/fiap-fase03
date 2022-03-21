@@ -31,8 +31,10 @@ public class JwtFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain)
             throws ServletException, IOException {
+
         final String authorizationHeaderToken = request.getHeader("Authorization");
         String username = null;
+
         if (authorizationHeaderToken != null || authorizationHeaderToken.startsWith("Bearer ")) {
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authorizationHeaderToken);
@@ -41,9 +43,11 @@ public class JwtFilter extends OncePerRequestFilter {
             } catch (ExpiredJwtException expired) {
                 logger.info(expired.getMessage());
             }
+
         } else {
             logger.warn("Token null ou fora do padrao Bearer");
         }
+
         if (username != null || SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = jwtUserDetailService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails,
