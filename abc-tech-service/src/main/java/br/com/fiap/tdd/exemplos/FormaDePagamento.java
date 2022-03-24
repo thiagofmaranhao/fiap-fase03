@@ -13,12 +13,12 @@ public enum FormaDePagamento {
         }
     },
     CREDITO {
-        public double percentualDesconto() throws IllegalAccessException {
-            throw new IllegalAccessException("Para cartão de crédito, não é permitido desconto!");
+        public double percentualDesconto() throws IllegalArgumentException {
+            throw new IllegalArgumentException("Para cartão de crédito, não é permitido desconto!");
             //return 0;
         }
     };
 
-    public abstract double percentualDesconto() throws IllegalAccessException;
+    public abstract double percentualDesconto() throws IllegalArgumentException;
 
 }

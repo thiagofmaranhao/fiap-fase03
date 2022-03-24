@@ -26,9 +26,10 @@ public class DescontosServiceTest {
     @Test
     void deveLancarExcecaoQuandoPagamentoNoCredito() {
         DescontoService descontoService = new DescontoService();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException t = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             descontoService.calcularDesconto(1000.00, FormaDePagamento.CREDITO);
-        }, "Para cartão de crédito, não é permitido desconto!");
+        });
+        Assertions.assertEquals("Para cartão de crédito, não é permitido desconto!", t.getMessage());
     }
 
 }
