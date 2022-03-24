@@ -1,0 +1,24 @@
+package br.com.fiap.tdd.exemplos;
+
+public enum FormaDePagamento {
+
+    DINHEIRO {
+        public double percentualDesconto() {
+            return 0.1;
+        }
+    },
+    DEBITO {
+        public double percentualDesconto() {
+            return 0.06;
+        }
+    },
+    CREDITO {
+        public double percentualDesconto() throws IllegalAccessException {
+            throw new IllegalAccessException("Para cartão de crédito, não é permitido desconto!");
+            //return 0;
+        }
+    };
+
+    public abstract double percentualDesconto() throws IllegalAccessException;
+
+}
