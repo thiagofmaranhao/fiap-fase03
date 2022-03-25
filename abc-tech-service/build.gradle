@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'br.com.fiap'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.3-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
@@ -43,4 +43,10 @@ tasks.named('test') {
 tasks.named('asciidoctor') {
 	inputs.dir snippetsDir
 	dependsOn test
+}
+
+processResources {
+	filesMatching("**/application.yml") {
+		expand( project.properties )
+	}
 }

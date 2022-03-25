@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "Pré build phase - Exemplo baixar dependências se fosse necesário"
+  build:
+    commands:
+      - echo "Building"
+      - gradle clean build war
+  post_build:
+    commands:
+      - echo "Movendo os arquivos para upload"
+      - mv build/libs/*.war ./ROOT.war
+artifacts:
+  files:
+    - ROOT.war

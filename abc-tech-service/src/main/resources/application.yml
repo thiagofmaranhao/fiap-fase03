@@ -1,5 +1,5 @@
 server:
   port: 80
 
-build.name: @project.version@
-build.version: @project.version@
+build.name: ${rootProject.name}
+build.version: ${version}
