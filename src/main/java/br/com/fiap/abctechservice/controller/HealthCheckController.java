@@ -25,7 +25,7 @@ public class HealthCheckController {
 
         try {
             properties.load(inputStream);
-            } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

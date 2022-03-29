@@ -6,7 +6,7 @@ phases:
   build:
     commands:
       - echo "Building"
-      - gradle clean build war
+      - mvn clean compile package
   post_build:
     commands:
       - echo "Movendo os arquivos para upload"
