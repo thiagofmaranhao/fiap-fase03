@@ -1,5 +1,6 @@
 package br.com.fiap.abctechservice.model;
 
+import br.com.fiap.abctechservice.model.dto.AssistanceDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,11 @@ public class Assistance {
 
     @Column(name = "description", nullable = false, length = 300)
     private String description;
+
+    public Assistance(AssistanceDTO assistanceDTO) {
+        this.id = assistanceDTO.getId();
+        this.name = assistanceDTO.getName();
+        this.description = assistanceDTO.getDescription();
+    }
 
 }

@@ -1,5 +1,6 @@
 package br.com.fiap.abctechservice.model;
 
+import br.com.fiap.abctechservice.model.dto.OrderDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "orders")
@@ -25,7 +27,7 @@ public class Order {
     private Long operatorId;
 
     @ManyToMany
-    private List<Assistance> services;
+    private List<Assistance> assistances;
 
     @OneToOne
     @JoinColumn(name = "start_order_location_id")
@@ -35,5 +37,15 @@ public class Order {
     @JoinColumn(name = "end_order_location_id")
     private OrderLocation endOrderLocation;
 
+    public Order(OrderDTO orderDTO) {
+        this.id = orderDTO.getId();
+        this.operatorId = orderDTO.getOperatorId();
+        this.assistances = orderDTO.getAssistances()
+                .stream()
+                .map(assistanceDTO -> new Assistance(assistanceDTO))
+                .collect(Collectors.toList());
+        this.startOrderLocation = new OrderLocation(orderDTO.getStartOrderLocation());
+        this.endOrderLocation = new OrderLocation(orderDTO.getEndOrderLocation());
+    }
 
 }

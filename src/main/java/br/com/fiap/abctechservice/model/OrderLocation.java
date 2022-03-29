@@ -1,5 +1,6 @@
 package br.com.fiap.abctechservice.model;
 
+import br.com.fiap.abctechservice.model.dto.OrderLocationDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,20 @@ public class OrderLocation {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "latitude", nullable = false)
     private Integer latitude;
+
+    @Column(name = "longitude", nullable = false)
     private Integer longitude;
+
+    @Column(name = "date", nullable = false)
     private Date date;
+
+    public OrderLocation(OrderLocationDTO orderLocation) {
+        this.id = orderLocation.getId();
+        this.latitude = orderLocation.getLatitude();
+        this.longitude = orderLocation.getLongitude();
+        this.date = orderLocation.getDate();
+    }
 
 }

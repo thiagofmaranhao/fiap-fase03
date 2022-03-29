@@ -3,6 +3,7 @@ package br.com.fiap.abctechservice.service;
 import br.com.fiap.abctechservice.model.Assistance;
 import br.com.fiap.abctechservice.model.Order;
 import br.com.fiap.abctechservice.model.OrderLocation;
+import br.com.fiap.abctechservice.model.dto.OrderDTO;
 import br.com.fiap.abctechservice.repository.AssistanceRepository;
 import br.com.fiap.abctechservice.repository.OrderRepository;
 import br.com.fiap.abctechservice.service.impl.AssistanceServiceImpl;
@@ -10,6 +11,8 @@ import br.com.fiap.abctechservice.service.impl.OrderServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatcher;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,14 +38,7 @@ public class OrderServiceTest {
     @Test
     public void test_list_success() {
 
-        Assistance itemAssist = new Assistance(1L, "Mock Name", "Mock Description");
-        Assistance itemAssist2 = new Assistance(2L, "Mock Name 2", "Mock Description 2");
-
-        OrderLocation startOrderLocation = new OrderLocation(1L, 2, 2, null);
-        OrderLocation endOrderLocation = new OrderLocation(1L, 2, 2, null);
-
-
-        Order o1 = new Order(1L, 2L, List.of(itemAssist, itemAssist2), startOrderLocation, endOrderLocation);
+        Order o1 = createOrder();
 
         when(orderRepository.findAll()).thenReturn(List.of(o1));
 
@@ -52,5 +48,30 @@ public class OrderServiceTest {
         Assertions.assertSame(values.get(0), o1);
 
     }
+
+    @Test
+    public void test_create_success() {
+
+        Order order = createOrder();
+
+        when(orderRepository.save(ArgumentMatchers.any(Order.class))).thenReturn(order);
+
+        OrderDTO orderDTO = orderService.create(new OrderDTO(order));
+
+        Assertions.assertNotNull(orderDTO);
+
+    }
+
+    private Order createOrder() {
+        Assistance itemAssist = new Assistance(1L, "Mock Name", "Mock Description");
+        Assistance itemAssist2 = new Assistance(2L, "Mock Name 2", "Mock Description 2");
+
+        OrderLocation startOrderLocation = new OrderLocation(1L, 2, 2, null);
+        OrderLocation endOrderLocation = new OrderLocation(1L, 2, 2, null);
+
+        Order o1 = new Order(1L, 2L, List.of(itemAssist, itemAssist2), startOrderLocation, endOrderLocation);
+        return o1;
+    }
+
 }
 

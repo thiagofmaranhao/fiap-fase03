@@ -41,5 +41,6 @@ public class AssistanceServiceTest {
         Assertions.assertSame(values.get(1), itemAssist2);
 
     }
+
 }
 
