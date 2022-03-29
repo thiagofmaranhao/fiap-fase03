@@ -15,7 +15,9 @@ spring:
     hibernate:
       ddl-auto: none
 
-#
+  flyway:
+    enabled: true
+
 #  security:
 #    user:
 #      password: xuxuzinho
