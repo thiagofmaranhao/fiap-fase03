@@ -1,37 +1,3 @@
-
--- auto-generated definition
-create table tb_user
-(
-    id       bigint auto_increment
-        primary key,
-    password varchar(255) null,
-    username varchar(255) null
-);
-
-
--- auto-generated definition
-create table tb_livro
-(
-    id                 bigint auto_increment
-        primary key,
-    isbn               varchar(255) null,
-    data_de_publicacao datetime(6)  null,
-    descricao          varchar(255) null,
-    preco              double       null,
-    titulo             varchar(255) null
-);
-
--- auto-generated definition
-create table order_location
-(
-    id        bigint auto_increment
-        primary key,
-    date      date null,
-    latitude  int  null,
-    longitude int  null
-);
-
--- auto-generated definition
 create table assistances
 (
     id          bigint auto_increment
@@ -40,7 +6,15 @@ create table assistances
     name        varchar(100) not null
 );
 
--- auto-generated definition
+create table order_location
+(
+    id        bigint auto_increment
+        primary key,
+    date      date not null,
+    latitude  int  not null,
+    longitude int  not null
+);
+
 create table orders
 (
     id                      bigint auto_increment
@@ -54,20 +28,32 @@ create table orders
         foreign key (start_order_location_id) references order_location (id)
 );
 
--- auto-generated definition
-create table orders_services
+create table orders_assistances
 (
-    order_id    bigint not null,
-    services_id bigint not null,
-    constraint FK37g230wkd5jvxbyx2s7koy21g
-        foreign key (services_id) references assistances (id),
-    constraint FKq863ndc65lt9lgj0jg1h8ravg
+    order_id       bigint not null,
+    assistances_id bigint not null,
+    constraint FK7yrpsl4pjmo5w1qatt4wryiks
+        foreign key (assistances_id) references assistances (id),
+    constraint FKr4g2lq1smaie715447ff8cqvp
         foreign key (order_id) references orders (id)
 );
 
+create table tb_livro
+(
+    id                 bigint auto_increment
+        primary key,
+    isbn               varchar(255) null,
+    data_de_publicacao datetime(6) null,
+    descricao          varchar(255) null,
+    preco              double null,
+    titulo             varchar(255) null
+);
 
-
-
-
-
+create table tb_user
+(
+    id       bigint auto_increment
+        primary key,
+    password varchar(255) null,
+    username varchar(255) null
+);
 
