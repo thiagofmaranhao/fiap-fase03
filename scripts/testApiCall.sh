@@ -34,13 +34,37 @@ curl --location --request POST 'http://localhost/users/login' \
 echo "Listando Livros..."
 curl --request GET \
   --url 'http://localhost/livros?titulo=A' \
-  --header 'Authorization: Bearer  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5ODQ2OSwiaWF0IjoxNjQ4NTk4MTY5fQ.YWzk0Q33dl2J0QVW1Tc-uoUjLmsi-lDsDdYkXz14i12K8UnRPwMbAMLLq1tlPFb98GDEv5qaSqwl8aiF9aZvvw' \
+  --header 'Authorization: Bearer  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5OTM0MiwiaWF0IjoxNjQ4NTk5MDQyfQ.xyW2_koAOGqXastz9sKnFmj8j0cvaR3hYTAibBWZJ0DaaS5FYiOwSjUZ2RAOQQNBeCklsyhLYqKFUZDHdlkANw"' \
 
 
 ##Crinado um Order
 echo "Criando uma ordem... AINDA FALTA COLOCAR UM JSON VALIDO"
 curl --request POST \
   --url http://localhost/order \
-  --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5ODYzMCwiaWF0IjoxNjQ4NTk4MzMwfQ.mt66cYKdYsqo47BQOE66QvM6W0q2smHabZRKqVw55WJLhSmo1p1owS-vAIFo2CBHz_i3ZlitYgtkDTkT6ev7dg' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5OTM0MiwiaWF0IjoxNjQ4NTk5MDQyfQ.xyW2_koAOGqXastz9sKnFmj8j0cvaR3hYTAibBWZJ0DaaS5FYiOwSjUZ2RAOQQNBeCklsyhLYqKFUZDHdlkANw"' \
   --header 'Content-Type: application/json' \
-  --data '{}'
+  --data '{
+            "id" : 1,
+            "operatorId" : 2,
+            "assistances" : [ {
+              "id" : 1,
+              "name" : "Mock Name",
+              "description" : "Mock Description"
+            }, {
+              "id" : 2,
+              "name" : "Mock Name 2",
+              "description" : "Mock Description 2"
+            } ],
+            "startOrderLocation" : {
+              "id" : 1,
+              "latitude" : 2,
+              "longitude" : 2,
+              "date" : null
+            },
+            "endOrderLocation" : {
+              "id" : 1,
+              "latitude" : 2,
+              "longitude" : 2,
+              "date" : null
+            }
+          }'
