@@ -44,27 +44,22 @@ curl --request POST \
   --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5OTM0MiwiaWF0IjoxNjQ4NTk5MDQyfQ.xyW2_koAOGqXastz9sKnFmj8j0cvaR3hYTAibBWZJ0DaaS5FYiOwSjUZ2RAOQQNBeCklsyhLYqKFUZDHdlkANw"' \
   --header 'Content-Type: application/json' \
   --data '{
-            "id" : 1,
             "operatorId" : 2,
             "assistances" : [ {
-              "id" : 1,
               "name" : "Mock Name",
               "description" : "Mock Description"
             }, {
-              "id" : 2,
               "name" : "Mock Name 2",
               "description" : "Mock Description 2"
             } ],
             "startOrderLocation" : {
-              "id" : 1,
               "latitude" : 2,
               "longitude" : 2,
-              "date" : null
+              "date" : 1648599964784
             },
             "endOrderLocation" : {
-              "id" : 1,
               "latitude" : 2,
               "longitude" : 2,
-              "date" : null
+              "date" : 1648599964784
             }
           }'
