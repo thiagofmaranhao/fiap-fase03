@@ -33,7 +33,7 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderDTO criar(@RequestBody OrderDTO orderDTO) {
+    public OrderDTO create(@RequestBody OrderDTO orderDTO) {
 
         return service.create(orderDTO);
 

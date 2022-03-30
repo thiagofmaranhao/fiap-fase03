@@ -34,4 +34,13 @@ curl --location --request POST 'http://localhost/users/login' \
 echo "Listando Livros..."
 curl --request GET \
   --url 'http://localhost/livros?titulo=A' \
-  --header 'Authorization: Bearer  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0NzkwNjk2NywiaWF0IjoxNjQ3OTA2NjY3fQ.JVYSL8Yc1X_TK4oT_g3ZTEuWqAf4rE1LE660gPx80L7jZAF4MPQEuUTk1Ur8Dx-RxPuKD3oKCjJrr6cyeNSnaQ' \
+  --header 'Authorization: Bearer  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5ODQ2OSwiaWF0IjoxNjQ4NTk4MTY5fQ.YWzk0Q33dl2J0QVW1Tc-uoUjLmsi-lDsDdYkXz14i12K8UnRPwMbAMLLq1tlPFb98GDEv5qaSqwl8aiF9aZvvw' \
+
+
+##Crinado um Order
+echo "Criando uma ordem... AINDA FALTA COLOCAR UM JSON VALIDO"
+curl --request POST \
+  --url http://localhost/order \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmYWJpb0BmaWFwLmNvbSIsImV4cCI6MTY0ODU5ODYzMCwiaWF0IjoxNjQ4NTk4MzMwfQ.mt66cYKdYsqo47BQOE66QvM6W0q2smHabZRKqVw55WJLhSmo1p1owS-vAIFo2CBHz_i3ZlitYgtkDTkT6ev7dg' \
+  --header 'Content-Type: application/json' \
+  --data '{}'
