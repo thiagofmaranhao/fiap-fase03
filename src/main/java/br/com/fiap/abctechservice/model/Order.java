@@ -26,14 +26,14 @@ public class Order {
     @Column(name = "operator_id", nullable = false)
     private Long operatorId;
 
-    @ManyToMany(cascade=CascadeType.PERSIST)
+    @ManyToMany
     private List<Assistance> assistances;
 
-    @OneToOne(cascade=CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "start_order_location_id")
     private OrderLocation startOrderLocation;
 
-    @OneToOne(cascade=CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "end_order_location_id")
     private OrderLocation endOrderLocation;
 
