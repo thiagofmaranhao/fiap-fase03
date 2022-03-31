@@ -24,6 +24,11 @@ public class UserController {
         return userService.create(userCreateDTO);
     }
 
+    @GetMapping("find")
+    public UserDTO findByUsername(@RequestParam(required = false, value = "username") String username) {
+        return userService.findByUsername(username);
+    }
+
     @PostMapping("login")
     public JwtDTO login(@RequestBody AuthDTO authDTO) {
         return userService.login(authDTO);

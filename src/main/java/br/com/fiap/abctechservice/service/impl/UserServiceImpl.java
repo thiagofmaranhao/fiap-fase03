@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -50,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public JwtDTO login(AuthDTO authDTO) {
-        try{
+        try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authDTO.getUsername(), authDTO.getPassword())
             );
@@ -61,6 +62,16 @@ public class UserServiceImpl implements UserService {
         JwtDTO jwtDTO = new JwtDTO();
         jwtDTO.setToken(token);
         return jwtDTO;
+    }
+
+    @Override
+    public UserDTO findByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null)
+            new UsernameNotFoundException("User not found");
+
+        return new UserDTO();
     }
 
 }

@@ -1,9 +1,8 @@
 package br.com.fiap.abctechservice.controller;
 
 import br.com.fiap.abctechservice.model.Order;
-import br.com.fiap.abctechservice.model.dto.CreateUpdateLivroDTO;
-import br.com.fiap.abctechservice.model.dto.LivroDTO;
 import br.com.fiap.abctechservice.model.dto.OrderDTO;
+import br.com.fiap.abctechservice.model.dto.OrderLocationDTO;
 import br.com.fiap.abctechservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +35,14 @@ public class OrderController {
     public OrderDTO create(@RequestBody OrderDTO orderDTO) {
 
         return service.create(orderDTO);
+
+    }
+
+    @PostMapping("{orderId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public OrderDTO endOrder(@PathVariable Long orderId, @RequestBody OrderLocationDTO orderLocationDTO) {
+
+        return service.endOrder(orderId, orderLocationDTO);
 
     }
 

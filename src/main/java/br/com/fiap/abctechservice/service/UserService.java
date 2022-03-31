@@ -11,4 +11,6 @@ public interface UserService {
 
     JwtDTO login(AuthDTO authDTO);
 
+    UserDTO findByUsername(String username);
+
 }
