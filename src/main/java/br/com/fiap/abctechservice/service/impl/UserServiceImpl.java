@@ -8,6 +8,7 @@ import br.com.fiap.abctechservice.model.dto.UserDTO;
 import br.com.fiap.abctechservice.repository.UserRepository;
 import br.com.fiap.abctechservice.security.JwtTokenUtil;
 import br.com.fiap.abctechservice.service.UserService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+@Profile("!dev")
 @Service
 public class UserServiceImpl implements UserService {
 

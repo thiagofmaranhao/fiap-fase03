@@ -5,9 +5,11 @@ import br.com.fiap.abctechservice.model.dto.JwtDTO;
 import br.com.fiap.abctechservice.model.dto.UserCreateDTO;
 import br.com.fiap.abctechservice.model.dto.UserDTO;
 import br.com.fiap.abctechservice.service.UserService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Profile("!dev")
 @RestController
 @RequestMapping("users")
 public class UserController {
