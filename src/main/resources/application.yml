@@ -13,17 +13,10 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
 
   flyway:
-    enabled: false
-
-#  security:
-#    user:
-#      password: xuxuzinho
-#      name: admin
-#      roles: ADMIN
-
+    enabled: true
 
 jwt:
   secret: f1aPs3cr37
