@@ -6,7 +6,11 @@ Projeto para Sprint 3 para o MBA de Enharia de Software FIAP.
 
 * Execute o script [startMySql.hs](scripts/startMysql.sh) para dar start no MySQL (esta usando o build para M1)
 * Execute a classe [AbcTechServiceApplication](src/main/java/br/com/fiap/abctechservice/AbcTechServiceApplication.java) para executar o projeto do backend;
-* Atente ao [script](/Users/leandrofranchi/work/projects/lfr/fiap-fase03/scripts/testApiCall.sh) com exemplos e caso seja primeira execução, execute a chamada da API para criação do usuário.
+* Atente ao [script](/Users/leandrofranchi/work/projects/lfr/fiap-fase03/scripts/testApiCall.sh) com exemplos e caso seja primeira execução, execute a chamada da API para criação do usuário, ordens, etc.
+
+OBS: Execute com profile=dev para desligar a segurança.
+
+![System Design](docs/exec-profile-dev.png)
 
 ## Problemas a serem resolvidos pela Solution Sprint
 
