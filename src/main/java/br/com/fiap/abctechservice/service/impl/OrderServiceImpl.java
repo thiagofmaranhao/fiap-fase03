@@ -1,5 +1,7 @@
 package br.com.fiap.abctechservice.service.impl;
 
+import br.com.fiap.abctechservice.handler.exception.MaximumAssistancesException;
+import br.com.fiap.abctechservice.handler.exception.MinimumAssistancesRequiredException;
 import br.com.fiap.abctechservice.model.Assistance;
 import br.com.fiap.abctechservice.model.Order;
 import br.com.fiap.abctechservice.repository.AssistanceRepository;
@@ -14,30 +16,30 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private OrderRepository orderRepository;
-    private AssistanceRepository assistanceRepository;
+    private final OrderRepository orderRepository;
+    private final AssistanceRepository assistanceRepository;
 
-    public OrderServiceImpl (@Autowired OrderRepository orderRepository,
-                             @Autowired AssistanceRepository assistanceRepository) {
+    public OrderServiceImpl(@Autowired OrderRepository orderRepository,
+                            @Autowired AssistanceRepository assistanceRepository) {
         this.orderRepository = orderRepository;
         this.assistanceRepository = assistanceRepository;
     }
 
     @Override
-    public void saveOrder(Order order, List<Long> arrayAssists)  {
+    public void saveOrder(Order order, List<Long> arrayAssists) {
         ArrayList<Assistance> assistances = new ArrayList<>();
 
-        arrayAssists.forEach( i ->{
+        arrayAssists.forEach(i -> {
             Assistance assistance = this.assistanceRepository.findById(i).orElseThrow();
             assistances.add(assistance);
         });
 
         order.setAssistances(assistances);
 
-        if (!order.hasMinAssists()){
-            throw new ArrayIndexOutOfBoundsException();
-        } else if (order.exceedsMaxAssists()){
-            throw new ArrayIndexOutOfBoundsException();
+        if (!order.hasMinAssists()) {
+            throw new MinimumAssistancesRequiredException("Ordem deve ter no minimo um assistence.", "");
+        } else if (order.exceedsMaxAssists()) {
+            throw new MaximumAssistancesException("Ordem deve ter no máximo 5 assistences.", "");
         }
 
         orderRepository.save(order);
