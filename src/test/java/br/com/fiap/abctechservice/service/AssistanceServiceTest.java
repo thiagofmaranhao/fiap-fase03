@@ -34,7 +34,7 @@ public class AssistanceServiceTest {
 
         when(assistanceRepository.findAll()).thenReturn(List.of(itemAssist, itemAssist2));
 
-        List<Assistance> values = assistanceService.getAssistanceList();
+        List<Assistance> values = assistanceService.getAssistances();
 
         Assertions.assertEquals(values.size(), 2);
         Assertions.assertSame(values.get(0), itemAssist);

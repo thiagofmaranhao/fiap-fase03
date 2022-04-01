@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface OrderService {
 
-    List<Order> getOrderList();
+    //List<Order> getOrderList();
 
-    OrderDTO create(OrderDTO orderDTO);
+    //OrderDTO create(OrderDTO orderDTO);
+
+    void saveOrder(Order order, List<Long> arrayAssists);
 
 }

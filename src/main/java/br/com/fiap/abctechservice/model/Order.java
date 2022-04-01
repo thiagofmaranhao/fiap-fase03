@@ -10,6 +10,21 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * {
+ * "operator_id" : 0,
+ * "services" : [1 , 2, 3],
+ * "start" : {
+ * "latitude" : 0.0,
+ * "longitude" : 0.0,
+ * "datetime" : "2022-02-19 00:00:00"
+ * },
+ * "end" : {
+ * "latitude" : 0.0,
+ * "longitude" : 0.0,
+ * "datetime" : "2022-02-19 00:00:00"
+ * }
+ */
 @Entity
 @Table(name = "orders")
 @Getter
@@ -37,15 +52,22 @@ public class Order {
     @JoinColumn(name = "end_order_location_id")
     private OrderLocation endOrderLocation;
 
-    public Order(OrderDTO orderDTO) {
-        this.id = orderDTO.getId();
-        this.operatorId = orderDTO.getOperatorId();
-        this.assistances = orderDTO.getAssistances()
-                .stream()
-                .map(assistanceDTO -> new Assistance(assistanceDTO))
-                .collect(Collectors.toList());
-        this.startOrderLocation = new OrderLocation(orderDTO.getStartOrderLocation());
-        this.endOrderLocation = new OrderLocation(orderDTO.getEndOrderLocation());
+//    public Order(OrderDTO orderDTO) {
+//        this.id = orderDTO.getId();
+//        this.operatorId = orderDTO.getOperatorId();
+//        this.assistances = orderDTO.getAssistances()
+//                .stream()
+//                .map(id -> new Assistance(id));
+//        this.startOrderLocation = new OrderLocation(orderDTO.getStartOrderLocation());
+//        this.endOrderLocation = new OrderLocation(orderDTO.getEndOrderLocation());
+//    }
+
+    public boolean hasMinAssists() {
+        return assistances.size() > 0;
+    }
+
+    public boolean exceedsMaxAssists() {
+        return assistances.size() > 15;
     }
 
 }

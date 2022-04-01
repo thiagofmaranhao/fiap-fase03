@@ -1,42 +1,32 @@
 package br.com.fiap.abctechservice.controller;
 
-import br.com.fiap.abctechservice.model.Order;
-import br.com.fiap.abctechservice.model.dto.CreateUpdateLivroDTO;
-import br.com.fiap.abctechservice.model.dto.LivroDTO;
+import br.com.fiap.abctechservice.application.OrderApplication;
 import br.com.fiap.abctechservice.model.dto.OrderDTO;
-import br.com.fiap.abctechservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
-    private final OrderService service;
+    private final OrderApplication orderApplication;
 
-    public OrderController(
-            @Autowired
-                    OrderService service
+
+    public OrderController(@Autowired OrderApplication orderApplication) {
+        this.orderApplication = orderApplication;
+    }
+
+    @PostMapping()
+    public ResponseEntity createOrder(
+            @RequestBody
+                    OrderDTO orderDto
     ) {
-        this.service = service;
-    }
-
-    @GetMapping()
-    public ResponseEntity<List<Order>> getAssistanceList() {
-        List<Order> list = this.service.getOrderList();
-        return ResponseEntity.ok(list);
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public OrderDTO create(@RequestBody OrderDTO orderDTO) {
-
-        return service.create(orderDTO);
-
+        orderApplication.createOrder(orderDto);
+        return ResponseEntity.ok().build();
     }
 
 }

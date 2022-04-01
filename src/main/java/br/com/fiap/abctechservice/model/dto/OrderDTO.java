@@ -1,5 +1,6 @@
 package br.com.fiap.abctechservice.model.dto;
 
+import br.com.fiap.abctechservice.model.Assistance;
 import br.com.fiap.abctechservice.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +10,23 @@ import lombok.Setter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * ```json
+ * {
+ * "operator_id" : 0,
+ * "services" : [1 , 2, 3],
+ * "start" : {
+ * 	"latitude" : 0.0,
+ * 	"longitude" : 0.0,
+ * 	"datetime" : "2022-02-19 00:00:00"
+ * },
+ * "end" : {
+ * 	"latitude" : 0.0,
+ * 	"longitude" : 0.0,
+ * 	"datetime" : "2022-02-19 00:00:00"
+ * }
+ * ```
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,7 +35,7 @@ public class OrderDTO {
 
     private Long id;
     private Long operatorId;
-    private List<AssistanceDTO> assistances;
+    private List<Long> assistances;
     private OrderLocationDTO startOrderLocation;
     private OrderLocationDTO endOrderLocation;
 
@@ -26,7 +44,7 @@ public class OrderDTO {
         this.operatorId = order.getOperatorId();
         this.assistances = order.getAssistances()
                 .stream()
-                .map(assistance -> new AssistanceDTO(assistance))
+                .map(Assistance::getId)
                 .collect(Collectors.toList());
         this.startOrderLocation = new OrderLocationDTO(order.getEndOrderLocation());
         this.endOrderLocation = new OrderLocationDTO(order.getEndOrderLocation());

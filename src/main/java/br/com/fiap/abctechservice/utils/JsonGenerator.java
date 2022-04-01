@@ -8,7 +8,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,8 +21,8 @@ public class JsonGenerator {
         Assistance itemAssist = new Assistance(1L, "Mock Name", "Mock Description");
         Assistance itemAssist2 = new Assistance(2L, "Mock Name 2", "Mock Description 2");
 
-        OrderLocation startOrderLocation = new OrderLocation(1L, 2, 2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        OrderLocation endOrderLocation = new OrderLocation(1L, 2, 2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        OrderLocation startOrderLocation = new OrderLocation(1L, 2.0, 2.0, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        OrderLocation endOrderLocation = new OrderLocation(1L, 2.0, 2.0, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 
         Order o1 = new Order(1L, 2L, List.of(itemAssist, itemAssist2), startOrderLocation, endOrderLocation);
 

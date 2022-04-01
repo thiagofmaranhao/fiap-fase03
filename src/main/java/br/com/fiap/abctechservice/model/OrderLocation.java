@@ -22,10 +22,10 @@ public class OrderLocation {
     private Long id;
 
     @Column(name = "latitude", nullable = false)
-    private Integer latitude;
+    private Double latitude;
 
     @Column(name = "longitude", nullable = false)
-    private Integer longitude;
+    private Double longitude;
 
     @Column(name = "date", nullable = false)
     private Date date;

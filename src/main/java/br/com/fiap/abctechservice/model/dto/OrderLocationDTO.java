@@ -14,16 +14,16 @@ import java.sql.Date;
 @NoArgsConstructor
 public class OrderLocationDTO {
 
+    private Long id;
+    private Double latitude;
+    private Double longitude;
+    private Date date;
+
     public OrderLocationDTO(OrderLocation orderLocation) {
         this.id = orderLocation.getId();
         this.latitude = orderLocation.getLatitude();
         this.longitude = orderLocation.getLongitude();
         this.date = orderLocation.getDate();
     }
-
-    private Long id;
-    private Integer latitude;
-    private Integer longitude;
-    private Date date;
 
 }

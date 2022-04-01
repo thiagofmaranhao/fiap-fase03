@@ -2,75 +2,81 @@ package br.com.fiap.abctechservice.service;
 
 import br.com.fiap.abctechservice.model.Assistance;
 import br.com.fiap.abctechservice.model.Order;
-import br.com.fiap.abctechservice.model.OrderLocation;
-import br.com.fiap.abctechservice.model.dto.OrderDTO;
 import br.com.fiap.abctechservice.repository.AssistanceRepository;
 import br.com.fiap.abctechservice.repository.OrderRepository;
-import br.com.fiap.abctechservice.service.impl.AssistanceServiceImpl;
 import br.com.fiap.abctechservice.service.impl.OrderServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatcher;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class OrderServiceTest {
 
     @Mock
     private OrderRepository orderRepository;
+    @Mock
+    private AssistanceRepository assistanceRepository;
     private OrderService orderService;
+
 
     @BeforeEach
     public void init() {
         MockitoAnnotations.openMocks(this);
-        orderService = new OrderServiceImpl(orderRepository);
+
+        orderService = new OrderServiceImpl(orderRepository, assistanceRepository);
+        when(assistanceRepository.findById(any())).thenReturn(Optional.of(new Assistance(1L, "Teste", "Teste Description")));
     }
 
     @Test
-    public void test_list_success() {
-
-        Order o1 = createOrder();
-
-        when(orderRepository.findAll()).thenReturn(List.of(o1));
-
-        List<Order> values = orderService.getOrderList();
-
-        Assertions.assertEquals(values.size(), 1);
-        Assertions.assertSame(values.get(0), o1);
-
+    public void order_service_not_null() {
+        Assertions.assertNotNull(orderService);
     }
 
     @Test
-    public void test_create_success() {
+    public void create_order_success() throws Exception {
+        Order newOrder = new Order();
+        newOrder.setOperatorId(1234L);
 
-        Order order = createOrder();
+        orderService.saveOrder(newOrder, generate_mock_assistance(1));
 
-        when(orderRepository.save(ArgumentMatchers.any(Order.class))).thenReturn(order);
 
-        OrderDTO orderDTO = orderService.create(new OrderDTO(order));
-
-        Assertions.assertNotNull(orderDTO);
-
+        verify(orderRepository, times(1)).save(newOrder);
     }
 
-    private Order createOrder() {
-        Assistance itemAssist = new Assistance(1L, "Mock Name", "Mock Description");
-        Assistance itemAssist2 = new Assistance(2L, "Mock Name 2", "Mock Description 2");
+    @Test
+    public void create_order_error_minimum() throws Exception {
+        Order newOrder = new Order();
+        newOrder.setOperatorId(1234L);
 
-        OrderLocation startOrderLocation = new OrderLocation(1L, 2, 2, null);
-        OrderLocation endOrderLocation = new OrderLocation(1L, 2, 2, null);
 
-        Order o1 = new Order(1L, 2L, List.of(itemAssist, itemAssist2), startOrderLocation, endOrderLocation);
-        return o1;
+        Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> orderService.saveOrder(newOrder, List.of()));
+        verify(orderRepository, times(0)).save(newOrder);
+    }
+
+    @Test
+    public void create_order_error_maximum() throws Exception {
+        Order newOrder = new Order();
+        newOrder.setOperatorId(1234L);
+
+        Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> orderService.saveOrder(newOrder, generate_mock_assistance(20)));
+        verify(orderRepository, times(0)).save(newOrder);
+    }
+
+    private List<Long> generate_mock_assistance(int number) {
+        ArrayList<Long> arrayList = new ArrayList<>();
+        for (int x = 0; x < number; x++) {
+            arrayList.add(Integer.toUnsignedLong(x));
+        }
+        return arrayList;
     }
 
 }
