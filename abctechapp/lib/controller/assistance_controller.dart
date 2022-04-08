@@ -10,9 +10,11 @@ class AssistanceController extends GetxController
   void onInit() {
     super.onInit();
     _service = Get.find<AssistanceServiceInterface>();
+    getAssistanceList();
   }
 
   void getAssistanceList() {
+    change([], status: RxStatus.loading());
     _service
         .getAssists()
         .then((value) => change(value, status: RxStatus.success()))

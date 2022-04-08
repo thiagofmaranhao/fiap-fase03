@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class Assistance {
@@ -23,27 +24,25 @@ class Assistance {
   }
 
   Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
-
-    result.addAll({'id': id});
-    result.addAll({'name': name});
-    result.addAll({'description': description});
-
-    return result;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'description': description,
+    };
   }
 
   factory Assistance.fromMap(Map<String, dynamic> map) {
     return Assistance(
-      id: map['id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      description: map['description'] ?? '',
+      id: map['id'] as int,
+      name: map['name'] as String,
+      description: map['description'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory Assistance.fromJson(String source) =>
-      Assistance.fromMap(json.decode(source));
+      Assistance.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() =>

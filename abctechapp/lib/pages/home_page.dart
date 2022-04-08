@@ -39,6 +39,9 @@ class HomePage extends GetView<AssistanceController> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => controller.getAssistanceList(),
+          child: const Icon(Icons.refresh)),
     );
   }
 }
