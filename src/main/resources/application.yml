@@ -1,9 +1,9 @@
 server:
   port: 80
 
-buid.name: ABC Proj
-build.version: 0.1
-
+build:
+  name: ABC Proj
+  version: 0.1
 
 spring:
   datasource:

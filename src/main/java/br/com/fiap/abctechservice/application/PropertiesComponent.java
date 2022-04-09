@@ -21,7 +21,7 @@ public class PropertiesComponent {
         }
     }
 
-    public String getName() { return properties.getProperty("build.name"); }
+    public String getName() { return properties.getProperty("name"); }
 
-    public String getVersion() { return properties.getProperty("build.version"); }
+    public String getVersion() { return properties.getProperty("version"); }
 }
