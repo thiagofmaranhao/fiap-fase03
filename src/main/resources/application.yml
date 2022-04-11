@@ -2,8 +2,8 @@ server:
   port: 80
 
 build:
-  name: ABC Proj
-  version: 0.1
+  name: @project.name@
+  version: @project.version@
 
 spring:
   datasource:
@@ -21,3 +21,12 @@ spring:
 jwt:
   secret: f1aPs3cr37
   expire: 120000
+
+
+
+
+#  DB_HOSTNAME=db-abc-tech.cnhei6gjxbzn.us-east-1.rds.amazonaws.com
+#  DB_PORT=3306
+#  DB_NAME=db_abc_tech
+#  DB_USERNAME=admin
+#  DB_PASSWORD:Fiap1234
