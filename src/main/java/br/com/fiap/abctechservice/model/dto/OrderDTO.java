@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +37,12 @@ import java.util.stream.Collectors;
 public class OrderDTO {
 
     private Long id;
+
+    @NotNull
+    @Positive
     private Long operatorId;
+    @NotEmpty
+    @NotNull
     private List<Long> assistances;
     private OrderLocationDTO startOrderLocation;
     private OrderLocationDTO endOrderLocation;
