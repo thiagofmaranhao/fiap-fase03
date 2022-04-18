@@ -8,6 +8,7 @@ import br.com.fiap.abctechservice.model.dto.UserDTO;
 import br.com.fiap.abctechservice.repository.UserRepository;
 import br.com.fiap.abctechservice.security.JwtTokenUtil;
 import br.com.fiap.abctechservice.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public JwtDTO login(AuthDTO authDTO) {
-        try{
+        try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authDTO.getUsername(), authDTO.getPassword())
             );

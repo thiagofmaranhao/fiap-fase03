@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void saveOrder(Order order, List<Long> arrayAssists) {
+    public Order saveOrder(Order order, List<Long> arrayAssists) {
         ArrayList<Assistance> assistances = new ArrayList<>();
 
         arrayAssists.forEach(i -> {
@@ -42,29 +42,7 @@ public class OrderServiceImpl implements OrderService {
             throw new MaximumAssistancesException("Ordem deve ter no máximo 5 assistences.", "");
         }
 
-        orderRepository.save(order);
+        return orderRepository.save(order);
     }
 
-    /*
-    @Override
-    public List<Order> listOrdersByOperator(Long operatorId) {
-        return null;
-    }
-
-     */
-
-    /*
-    @Override
-    public List<Order> getOrderList() {
-        return this.repository.findAll();
-    }
-
-    @Override
-    public OrderDTO create(OrderDTO orderDTO) {
-
-        Order order = new Order(orderDTO);
-        return new OrderDTO(repository.save(order));
-
-    }
-    */
 }

@@ -29,7 +29,6 @@ public class OrderServiceTest {
     private AssistanceRepository assistanceRepository;
     private OrderService orderService;
 
-
     @BeforeEach
     public void init() {
         MockitoAnnotations.openMocks(this);
@@ -47,10 +46,7 @@ public class OrderServiceTest {
     public void create_order_success() throws Exception {
         Order newOrder = new Order();
         newOrder.setOperatorId(1234L);
-
         orderService.saveOrder(newOrder, generate_mock_assistance(1));
-
-
         verify(orderRepository, times(1)).save(newOrder);
     }
 
@@ -58,8 +54,14 @@ public class OrderServiceTest {
     public void create_order_error_minimum() throws Exception {
         Order newOrder = new Order();
         newOrder.setOperatorId(1234L);
+        Assertions.assertThrows(MinimumAssistancesRequiredException.class, () -> orderService.saveOrder(newOrder, List.of()));
+        verify(orderRepository, times(0)).save(newOrder);
+    }
 
-
+    @Test
+    public void create_order_error_null() throws Exception {
+        Order newOrder = new Order();
+        newOrder.setOperatorId(null);
         Assertions.assertThrows(MinimumAssistancesRequiredException.class, () -> orderService.saveOrder(newOrder, List.of()));
         verify(orderRepository, times(0)).save(newOrder);
     }
@@ -68,9 +70,14 @@ public class OrderServiceTest {
     public void create_order_error_maximum() throws Exception {
         Order newOrder = new Order();
         newOrder.setOperatorId(1234L);
-
         Assertions.assertThrows(MaximumAssistancesException.class, () -> orderService.saveOrder(newOrder, generate_mock_assistance(20)));
         verify(orderRepository, times(0)).save(newOrder);
+    }
+
+    @Test
+    public void void_create_order_with_operatorId_Null() {
+        Order newOrder = new Order();
+        Assertions.assertThrows(NullPointerException.class, () -> orderService.saveOrder(newOrder, null));
     }
 
     private List<Long> generate_mock_assistance(int number) {

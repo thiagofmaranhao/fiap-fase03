@@ -3,7 +3,7 @@ server:
 
 
 build:
-  name: ABC Proj
+  name: Sprint3
   version: 0.1
 
 spring:

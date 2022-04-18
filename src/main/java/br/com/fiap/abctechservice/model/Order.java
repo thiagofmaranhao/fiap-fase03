@@ -52,16 +52,6 @@ public class Order {
     @JoinColumn(name = "end_order_location_id")
     private OrderLocation endOrderLocation;
 
-//    public Order(OrderDTO orderDTO) {
-//        this.id = orderDTO.getId();
-//        this.operatorId = orderDTO.getOperatorId();
-//        this.assistances = orderDTO.getAssistances()
-//                .stream()
-//                .map(id -> new Assistance(id));
-//        this.startOrderLocation = new OrderLocation(orderDTO.getStartOrderLocation());
-//        this.endOrderLocation = new OrderLocation(orderDTO.getEndOrderLocation());
-//    }
-
     public boolean hasMinAssists() {
         return assistances.size() > 0;
     }
