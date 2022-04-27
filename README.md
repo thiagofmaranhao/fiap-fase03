@@ -41,12 +41,12 @@ OBS: Execute com profile=dev para desligar a segurança.
 
 ## Entregáveis
 
-| Entregável                                                                                                                                | Observações | Responsável | Status                                 |
-|-------------------------------------------------------------------------------------------------------------------------------------------|-------------|-------------|----------------------------------------|
-| Apresentação com quais requisitos serão desenvolvidos na POC do aplicativo (lembrando que, na live, desenvolveremos todos os requisitos). |             |             | <span style="color:red">TODO</span>    | 
-| Print do pipeline executado no CI/CD da aplicação.                                                                                        |             |             | <span style="color:red">TODO</span>    |    
-| O código de backend desenvolvido em Springboot com os testes unitários em ao menos 30% das features.                                      |             | Leandro     | <span style="color:green">DONE</span>  |
-| O código front-end desenvolvido em Flutter/Dart com os requisitos descritos na apresentação.                                              |             | Thiago      | <span style="color:green">DONE</span>  | 
+| Entregável                                                                                                                                | Observações              | Responsável | Status                                 |
+|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|-------------|----------------------------------------|
+| Apresentação com quais requisitos serão desenvolvidos na POC do aplicativo (lembrando que, na live, desenvolveremos todos os requisitos). | Docs anexados no FIAP ON |             | <span style="color:green">DONE</span>  | 
+| Print do pipeline executado no CI/CD da aplicação.                                                                                        | Prints abaixo            |             | <span style="color:green">DONE</span>  |    
+| O código de backend desenvolvido em Springboot com os testes unitários em ao menos 30% das features.                                      |                          | Leandro     | <span style="color:green">DONE</span>  |
+| O código front-end desenvolvido em Flutter/Dart com os requisitos descritos na apresentação.                                              |                          | Thiago      | <span style="color:green">DONE</span>  | 
 
 ### Code Build
 
